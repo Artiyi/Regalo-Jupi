@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor VHS Retro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/vhs_television.css">
+  <link rel="stylesheet" href="../styles/vhs.css">
+  <link rel="stylesheet" href="../styles/vhs_casetera.css">
+</head>
+<body>
+  <div id="main-container">
+    <div id="tv-section">
+      <div class="tv-frame">
+        <div id="tv-screen">
+          <video id="vhsPlayer" style="display: none;"></video>
+        </div>
+        <div class="tv-knobs">
+          <div class="tv-knob"></div>
+          <div class="tv-knob"></div>
+        </div>
+        <div class="tv-bottom-panel">
+          <div class="tv-button"></div>
+          <div class="tv-speaker"></div>
+          <div class="tv-button"></div>
+        </div>
+      </div>
+      <div class="tv-legs">
+        <div class="tv-leg"></div>
+        <div class="tv-leg"></div>
+      </div>
+    </div>
+    
+    <div id="vhs-inserter">
+      <div id="vhs-slot">
+        <div id="insert-text">INSERTA VHS</div>
+        <div id="inserted"></div>
+      </div>
+      <div id="floorArea">
+        <!-- Los VHS se generarán dinámicamente con JavaScript -->
+      </div>
+    </div>
+
+    <!-- Botón de regreso -->
+    <button id="back-button" class="back-button">← Volver</button>
+    
+    <!-- Sonidos -->
+    <audio id="insertSound" preload="auto">
+      <source src="../assets/audio/button/insert.mp3" type="audio/mp3">
+    </audio>
+    
+    <!-- Casetera con controles funcionales -->
+    <div class="casetera">
+      <div class="slot"></div>
+      <div class="slot2"></div>
+      <div class="slot3"></div>
+      <div class="slot4"></div>
+      <div class="slot5"></div>
+      <div class="screen">
+        <span id="statusMessage">INSERTA VHS</span>
+        <span id="timeCounter">00:00 / 00:00</span>
+      </div>
+      <div class="panel-buttons">
+        <div class="panel-button" id="btnVolUp">VOL+</div>
+        <div class="panel-button" id="btnVolDown">VOL-</div>
+      </div>
+      <div class="control-panel">
+        <div class="control-button play" id="btnPlay">▶</div>
+        <div class="control-button" id="btnStop">⏹</div>
+        <div class="control-button" id="btnRew">⏮</div>
+        <div class="control-button" id="btnFwd">⏭</div>
+        <div class="control-button" id="btnPause">⏸</div>
+      </div>
+      <div class="eject-button" id="btnEject">EJECT</div>
+    </div>
+  </div>
+  
+  <script src="../scripts/vhs_casetera.js"></script>
+  <script src="../scripts/vhs.js"></script>
+</body>
+</html>

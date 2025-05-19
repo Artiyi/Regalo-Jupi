@@ -1,0 +1,223 @@
+/* Estilos para el televisor */
+.tv-section {
+  width: 100%;
+  position: relative;
+}
+
+.tv-frame {
+  width: 100%;
+  background-color: #ffb6c1;
+  border: 8px solid #c76da1;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.tv-screen {
+  width: 100%;
+  height: 350px;
+  background-color: #331133;
+  border: 8px solid #663366;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.tv-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #442244,
+    #442244 2px,
+    #553355 2px,
+    #553355 4px
+  );
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.tv-knobs {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 10;
+}
+
+.tv-knob {
+  width: 40px;
+  height: 40px;
+  background-color: #9370db;
+  border: 3px solid #663366;
+  border-radius: 50%;
+  position: relative;
+  transform: translateX(20px);
+}
+
+.tv-knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background-color: #663366;
+  border-radius: 50%;
+}
+
+.tv-bottom-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.tv-button {
+  width: 30px;
+  height: 30px;
+  background-color: #9370db;
+  border: 2px solid #663366;
+  border-radius: 5px;
+}
+
+.tv-speaker {
+  width: 200px;
+  height: 50px;
+  background-color: #c76da1;
+  border: 2px solid #663366;
+  border-radius: 5px;
+}
+
+.tv-legs {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.tv-leg {
+  width: 50px;
+  height: 30px;
+  background-color: #c76da1;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Reproductor de video */
+.vhs-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* Efectos VHS */
+.vhs-noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Efecto de líneas de TV CRT */
+.tv-screen.playing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  opacity: 0.7;
+  z-index: 3;
+  pointer-events: none;
+  animation: tv-scanlines 0.5s linear infinite;
+}
+
+/* Efecto de parpadeo ocasional */
+.tv-screen.playing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  opacity: 0;
+  z-index: 4;
+  pointer-events: none;
+  animation: tv-flicker 5s infinite;
+}
+
+/* Animación de líneas de escaneo */
+@keyframes tv-scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 2px;
+  }
+}
+
+/* Animación de parpadeo */
+@keyframes tv-flicker {
+  0% { opacity: 0; }
+  5% { opacity: 0.5; }
+  10% { opacity: 0; }
+  15% { opacity: 0.2; }
+  20% { opacity: 0; }
+  55% { opacity: 0; }
+  60% { opacity: 0.3; }
+  65% { opacity: 0; }
+  90% { opacity: 0; }
+  95% { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
+/* Efecto de distorsión de color */
+.tv-screen.playing {
+  position: relative;
+  overflow: hidden;
+}
+
+.tv-screen.playing video {
+  position: relative;
+  z-index: 2;
+  filter: saturate(1.2) contrast(1.1) brightness(1.1);
+}
+
+/* Responsive para TV */
+@media (max-width: 768px) {
+  .tv-frame {
+    padding: 10px;
+  }
+  
+  .tv-screen {
+    height: 250px;
+  }
+}

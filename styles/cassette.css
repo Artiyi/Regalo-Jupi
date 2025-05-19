@@ -1,0 +1,375 @@
+/* === ESTILOS GENERALES === */
+body {
+  margin: 0;
+  background-color: #ffe6f0;
+  font-family: 'Press Start 2P', 
+  cursive;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor principal de 1440px */
+.main-container {
+  width: 1440px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff0f5;
+}
+
+/* === REPRODUCTOR (CASSETTE DECK) === */
+#canvasBackground {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #fff0f5;
+}
+
+#room {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* === WALKMAN CON TAPA === */
+#walkman-container {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  z-index: 10;
+}
+
+#walkman-body {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #EABDE6;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+#walkman-lid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 182, 193, 0.3);
+  border-radius: 20px;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.7s ease-in-out;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+#walkman-container.open #walkman-lid {
+  transform: rotateX(-180deg);
+}
+
+#lid-button {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: #555;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  font-family: inherit;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+#lid-button:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* === ZONA DE INSERCIÓN (AJUSTADA) === */
+#cassetteDeck {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  border: none;
+  z-index: 1;
+}
+
+#insertedCassette {
+  width: 160px;
+  height: 96px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+  position: relative;
+  z-index: 3;
+}
+
+#insertedCassette img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+#cassetteDeck.inserted #insertedCassette {
+  opacity: 1;
+}
+
+#walkman-container:not(.open) #cassetteDeck.inserted #insertedCassette {
+  z-index: 3;
+  opacity: 1;
+}
+
+#walkman-container:not(.open) #cassetteDeck.inserted #insertedCassette img {
+  transform: scale(1.2);
+}
+
+/* === CASSETTES === */
+.cassette {
+  width: 120px;
+  height: 72px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  cursor: grab;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.cassette:hover {
+  transform: scale(1.35);
+}
+
+.pickup {
+  transform: scale(1.25) rotate(-5deg);
+  transition: transform 0.2s;
+}
+
+/* === BOTONES === */
+.iconButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  transform: translateY(0);
+}
+
+.iconButton img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.iconButton:hover img {
+  transform: scale(1.1);
+}
+
+.iconButton:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* === PANEL DE CONTROL === */
+#controlsPanel {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffe6f0;
+  border: 3px solid #d63384;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+#statusMessage {
+  font-size: 16px;
+  color: #d63384;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+  min-height: 20px;
+}
+
+#trackTitle {
+  font-size: 14px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #6b0034;
+  text-align: center;
+  min-height: 20px;
+}
+
+/* Barra de progreso */
+#progressBar {
+  margin-bottom: 15px;
+  width: 300px;
+  height: 8px;
+  background: #ffd6e0;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#progressMarker {
+  width: 10px;
+  height: 20px;
+  background: #ff007f;
+  position: absolute;
+  top: -6px;
+  left: 0;
+  border-radius: 4px;
+}
+
+/* Contenedor de botones principales */
+#buttonsContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grupo de controles de volumen */
+.volume-group {
+  display: flex;
+  gap: 5px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+/* === POSICIÓN DE CASSETTES (2 FILAS DE 4) === */
+#floorArea {
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 102px);
+  grid-auto-rows: 60px;
+  gap: 22px;
+  padding: 10px;
+  width: fit-content;
+  max-width: calc(100% - 45px);
+}
+
+/* === ANIMACIONES === */
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { margin-left: 0; }
+  25% { margin-left: -5px; }
+  50% { margin-left: 5px; }
+  75% { margin-left: -5px; }
+}
+
+/* === BANNER PRINCIPAL === */
+.banner {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d63384;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  z-index: 1000;
+  max-width: none;
+  text-align: center;
+  transition: all 0.5s ease;
+  white-space: nowrap;
+}
+
+/* Efecto para cambios de texto */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.banner-updated {
+  animation: fadeIn 0.5s ease;
+}
+
+/* === BOTÓN DE REGRESO === */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #d63384;
+  color: #fff8e8;
+  border: 3px solid #E69DB8;
+  padding: 8px 12px;
+  font-family: 'Press Start 2P', 
+  cursive;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s;
+  text-decoration: none;
+  border-radius: 8px
+}
+#progressBar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 192, 203, 0.3);
+  border-radius: 2px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#progressMarker {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: pink;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  transition: left 0.1s linear;
+  box-shadow: 0 0 5px rgba(255, 192, 203, 0.5);
+  image-rendering: pixelated;
+  background-image: radial-gradient(
+    circle at center,
+    pink 60%,
+    rgba(255, 192, 203, 0.7) 70%,
+    rgba(255, 192, 203, 0.5) 80%
+  );
+}
+
+.back-button:hover {
+  background: #F49BAB;
+}

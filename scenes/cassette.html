@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz cumpleaños Amore❤</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/cassette.css">
+  </head>
+<body>
+  <!-- === ESTRUCTURA HTML === -->
+  <div class="main-container">
+    <canvas id="canvasBackground"></canvas>
+    <div class="banner" id="banner">❤ Bienvenida al reproductor de Archie ❤</div>
+
+      <!-- Botón de regreso -->
+      <button id="back-button" class="back-button">← Volver</button>
+
+    <div id="room">
+      <!-- WALKMAN -->
+      <div id="walkman-container">
+        <div id="walkman-body">
+          <div id="walkman-lid"></div>
+          <div id="cassetteDeck">
+            <div id="insertedCassette"></div>
+          </div>
+        </div>
+        <button id="lid-button" class="iconButton">
+          <img src="../assets/images/ui/button/eject.png" alt="Abrir Tapa">
+        </button>
+      </div>
+      
+      <!-- Área de cassettes en 2 filas de 4 -->
+      <div id="floorArea"></div> 
+    </div>
+    
+    <!-- PANEL DE CONTROL -->
+    <div id="controlsPanel">
+      <div id="statusMessage">Inserta un cassette</div>
+      <div id="trackTitle">Ningún cassette insertado</div>
+      <div id="progressBar">
+        <div id="progressMarker"></div>
+      </div>
+      <div id="buttonsContainer">
+        <!-- Botones de reproducción -->
+        <button id="btnPause" class="iconButton">
+          <img src="../assets/images/ui/button/pause.png" alt="Pausa">
+        </button>
+        <button id="btnPlay" class="iconButton">
+          <img src="../assets/images/ui/button/play.png" alt="Play">
+        </button>
+        <button id="btnPrev" class="iconButton">
+          <img src="../assets/images/ui/button/prev.png" alt="Anterior">
+        </button>
+        <button id="btnNext" class="iconButton">
+          <img src="../assets/images/ui/button/next.png" alt="Siguiente">
+        </button>
+        <button id="btnEject" class="iconButton">
+          <img src="../assets/images/ui/button/eject.png" alt="Expulsar">
+        </button>
+        <!-- Botones de volumen -->
+        <div class="volume-group">
+          <button id="btnVolDown" class="iconButton">
+            <img src="../assets/images/ui/button/voldown.png" alt="Bajar volumen">
+          </button>
+          <button id="btnVolUp" class="iconButton">
+            <img src="../assets/images/ui/button/volup.png" alt="Subir volumen">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/cassette.js"></script>
+</body>
+</html>

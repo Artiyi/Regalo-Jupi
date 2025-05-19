@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Álbum Pixel Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/album.css">
+</head>
+<body>
+  <!-- Botón de audio -->
+  <button id="audio-toggle" class="audio-button">🔊</button>
+  <audio id="bg-audio" loop>
+    <source src="../assets/audio/album/coco.mp3" type="audio/mp3">
+  </audio>
+    <source src="../assets/audio/background.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Selección de álbumes -->
+  <div id="album-selection" class="album-selection">
+  <!-- Botón volver -->
+  <button id="back-button" class="back-button">← Volver</button>
+    <div class="album-option" data-album="red">
+      <img src="../assets/images/album/red/photos/red-closed.jpg" alt="Álbum Rojo">
+    </div>
+    <div class="album-option" data-album="blue">
+      <img src="../assets/images/album/blue/photos/blue-closed.jpg" alt="Álbum Azul">
+    </div>
+  </div>
+
+  <!-- Libro abierto -->
+  <div id="open-album" class="open-album hidden">
+    <div class="book">
+      <div class="pages-container"></div>
+    </div>
+    <div class="controls">
+      <button id="exit-button">Salir</button>
+      <button id="prev-page">◀ Anterior</button>
+      <button id="next-page">Siguiente ▶</button>
+    </div>
+  </div>
+
+  <script src="../scripts/album.js"></script>
+</body>
+</html>

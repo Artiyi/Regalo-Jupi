@@ -1,0 +1,78 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', monospace;
+  background: black;
+  color: #ff4da6;
+  overflow: hidden;
+  position: relative;
+}
+body::before {
+  content: '♥';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  color: rgba(255, 182, 193, 0.3);
+  z-index: -1;
+  animation: hearts 20s linear infinite;
+  background: repeating-linear-gradient(
+    0deg,
+    #ffd1dc 0%,
+    #ffb6c1 25%,
+    #ff69b4 50%,
+    #ffb6c1 75%,
+    #ffd1dc 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: justify;
+  letter-spacing: 20px;
+  line-height: 24px;
+  padding: 20px;
+}
+
+@keyframes hearts {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+#loading-screen { width: 100vw; height: 100vh; display: flex;
+  align-items: center; justify-content: center; flex-direction: column;
+}
+#loading-text { font-size: 48px; }
+.dots::after {
+  content: ''; animation: dots 1s steps(4, end) infinite;
+}
+@keyframes dots {
+  0% { content: ''; } 25% { content: '.'; }
+  50% { content: '..'; } 75% { content: '...'; } 100% { content: ''; }
+}
+#progress-bar {
+  width: 60%;
+  height: 32px;
+  background: #222;
+  margin-top: 20px;
+  border-radius: 0;
+  overflow: hidden;
+  border: 4px solid #ff4da6;
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+#progress-fill {
+  height: 100%; 
+  width: 0%; 
+  background: #ff4da6;
+  transition: width 6s linear;
+}
+#ready-text {
+  display: flex; font-size: 48px; margin-top: 30px;
+  opacity: 0; transform: scale(0.8); transition: opacity 1s, transform 1s;
+}
+#ready-text.show { display: block; opacity: 1; transform: scale(1); }

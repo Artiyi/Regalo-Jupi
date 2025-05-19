@@ -1,0 +1,259 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #D8CFF4;
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#main-container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Panel VCR */
+#controls-section {
+  width: 100%;
+}
+
+#vcr-panel {
+  width: 100%;
+  background-color: #ffb6c1;
+  border: 5px solid #663366;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Sección superior con display y controles de volumen */
+.vcr-top-section {
+  display: flex;
+  gap: 15px;
+}
+
+/* Display negro rectangular */
+.vcr-display-container {
+  flex: 1;
+  background-color: #442244;
+  border: 3px solid #553355;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Textos dentro del display */
+.vcr-display-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+#statusMessage {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  font-size: 12px;
+}
+
+#timeCounter {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  font-size: 12px;
+}
+
+/* Controles de volumen verticales */
+.volume-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.volume-button {
+  width: 40px;
+  height: 40px;
+  background-color: #9370db;
+  border: 3px solid #663366;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+/* Sección inferior con botones de reproducción y eject */
+.vcr-bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botones de reproducción en fila */
+.playback-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.vcr-button {
+  width: 50px;
+  height: 50px;
+  background-color: #9370db;
+  border: 3px solid #663366;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+/* Botón de play rectangular (doble ancho) */
+#btnPlay {
+  width: 100px;
+}
+
+/* Sección de eject */
+.eject-section {
+  display: flex;
+  justify-content: center;
+}
+
+/* Botón de eject rectangular (doble ancho) */
+.eject-button {
+  width: 100px;
+  height: 50px;
+  background-color: #9370db;
+  border: 3px solid #663366;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+/* Área de VHS */
+#vhs-inserter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#vhs-slot {
+  background-color: #663366;
+  border: 3px solid #553355;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  font-size: 12px;
+  position: relative;
+}
+
+#inserted {
+  position: absolute;
+  bottom: 5px;
+  font-size: 10px;
+  color: #ffff00;
+  opacity: 0;
+}
+
+/* Estilos para VHS */
+.vhs-tape {
+  width: 120px;
+  height: 70px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 5px;
+  position: relative;
+}
+
+.vhs-tape img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vhs-tape:hover {
+  transform: translateY(-3px);
+}
+
+.vhs-tape.selected {
+  border-color: #00ffff;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+/* Área de cintas VHS */
+#floorArea {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  background-color: #663366;
+  border: 3px solid #553355;
+  border-radius: 10px;
+  min-height: 100px;
+}
+
+/* Botón de regreso */
+.back-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background-color: #9370db;
+  border: 3px solid #663366;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #main-container {
+    max-width: 95%;
+  }
+  
+  .vcr-button, .eject-button, .volume-button {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+  
+  #btnPlay, .eject-button {
+    width: 80px;
+  }
+  
+  .vcr-top-section {
+    flex-direction: column;
+  }
+  
+  .volume-controls {
+    flex-direction: row;
+  }
+}
